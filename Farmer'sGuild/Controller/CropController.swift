@@ -7,9 +7,64 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
 
-class CropController :SKScene {
+class CropController {
+    
+    static let shared = CropController()
+    
+    var crops: [Crop] = []
+    
+    //As soon as this file is called, the function inside the init statement will get called. The array of Crops will be added to our array variable above.
+    init() {
+        loadFromPersistentStorage()
+    }
+    
+    func startHarvest(with date: Date) {
+        let expirationDate = date.addingTimeInterval(Constants.cropTimeValue)
+        let newHarvest = Crop(textureName: "lemon_tree_bear", cropStage: 0, startTime: date, expirationTime: expirationDate)
+        crops.append(newHarvest)
+        
+        saveToPersistentStorage()
+    }
+    
+    func advanceHarvest(of crop: Crop, by value: Int) {
+        guard let index = crops.firstIndex(of: crop) else { return }
+        
+        //crop to update if found
+        crops[index].cropStage = value
+        crops[index].textureName = "lemon_tree_lemons"
+        saveToPersistentStorage()
+    }
+    
+    //MARK: - Persistance
+    
+    private func myFileURL() -> URL {
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectoryURL = urls[0].appendingPathComponent("Crop.json")
+        return documentsDirectoryURL
+    }
+    
+    func saveToPersistentStorage() {
+        do {
+            let data = try JSONEncoder().encode(crops)
+            try data.write(to: myFileURL())
+        } catch {
+            print("Error saving to persistent storage: \(error.localizedDescription)")
+        }
+    }
+    
+    func loadFromPersistentStorage() {
+        do {
+            let data = try Data(contentsOf: myFileURL())
+            let crops = try JSONDecoder().decode([Crop].self, from: data)
+            self.crops = crops
+        } catch {
+            print("Error loading from persistent storage: \(error.localizedDescription)")
+        }
+    }
+}
+
+
 //    class TreeObject: SKScene {
 //        var Tree = SKSpriteNode()
 //
@@ -46,30 +101,5 @@ class CropController :SKScene {
 //
 //    treeAnimation = SKAction.animateWithTextures(textures, timePerFrame: 0.1)
 
-    
-    //how dynamically siwtch out texture images or swap images
-    
-  
-    
-    
-   static func growCrop() {
 
-           
-       
-       
-        // identify the crop state that its in
-        //for example, is it bare or have lemons already
-        
-        //if texture is bare then turn it to lemons
-        
-        //update the texutre (image) on the main queue dispatchqueue.main.asynch
-       
-       print("\n[CropController] -  growCrop: switch the bare lemon tree texture image to a tree with lemons texture image\nThe bare lemon tree now has a ton of lemons!!\n")
-        
-    }
-
-    
-    
-    
-    
-}
+//how dynamically siwtch out texture images or swap images

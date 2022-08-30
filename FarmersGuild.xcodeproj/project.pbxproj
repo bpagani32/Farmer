@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BF18EDF28BDC28F00140328 /* Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF18EDE28BDC28F00140328 /* Crop.swift */; };
 		7C03600E28A57F15008434AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C03600D28A57F15008434AD /* AppDelegate.swift */; };
 		7C03601028A57F15008434AD /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7C03600F28A57F15008434AD /* GameScene.sks */; };
 		7C03601228A57F15008434AD /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7C03601128A57F15008434AD /* Actions.sks */; };
@@ -23,9 +24,7 @@
 		7CCA5B1C28B6CD8E00130B7F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA5B1B28B6CD8E00130B7F /* Constants.swift */; };
 		7CCA5B1E28B6D53400130B7F /* CropController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA5B1D28B6D53400130B7F /* CropController.swift */; };
 		7CCA5B2628B6D7A200130B7F /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA5B2528B6D7A200130B7F /* TimerController.swift */; };
-		7CCA5B2A28B94B7800130B7F /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 7CCA5B2928B94B7800130B7F /* Images */; };
 		7CCA5B5528BD3D1700130B7F /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA5B5428BD3D1700130B7F /* Sound.swift */; };
-		7CCA5B5828BD41AE00130B7F /* musicSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7CCA5B5728BD41AD00130B7F /* musicSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BF18EDE28BDC28F00140328 /* Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crop.swift; sourceTree = "<group>"; };
 		7C03600A28A57F15008434AD /* FarmersGuild.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FarmersGuild.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C03600D28A57F15008434AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C03600F28A57F15008434AD /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -65,9 +65,7 @@
 		7CCA5B1B28B6CD8E00130B7F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7CCA5B1D28B6D53400130B7F /* CropController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropController.swift; sourceTree = "<group>"; };
 		7CCA5B2528B6D7A200130B7F /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
-		7CCA5B2928B94B7800130B7F /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Images; path = ../Images; sourceTree = "<group>"; };
 		7CCA5B5428BD3D1700130B7F /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
-		7CCA5B5728BD41AD00130B7F /* musicSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = musicSound.mp3; path = ../../../../Downloads/musicSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +93,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BF18EDD28BDC27E00140328 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1BF18EDE28BDC28F00140328 /* Crop.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7C03600128A57F15008434AD = {
 			isa = PBXGroup;
 			children = (
 				7C03600C28A57F15008434AD /* Farmer'sGuild */,
-				7CCA5B2928B94B7800130B7F /* Images */,
 				7C03602628A57F17008434AD /* Farmer'sGuildTests */,
 				7C03603028A57F17008434AD /* Farmer'sGuildUITests */,
 				7C03600B28A57F15008434AD /* Products */,
@@ -119,9 +124,9 @@
 		7C03600C28A57F15008434AD /* Farmer'sGuild */ = {
 			isa = PBXGroup;
 			children = (
+				1BF18EDD28BDC27E00140328 /* Model */,
 				7CCA5B2428B6D73900130B7F /* View */,
 				7CCA5B2128B6D70100130B7F /* ViewController */,
-				7CCA5B2028B6D6FE00130B7F /* Model */,
 				7CCA5B1F28B6D6F700130B7F /* Controller */,
 				7CCA5B2328B6D71000130B7F /* Utilities */,
 				7CCA5B2228B6D70B00130B7F /* Resoruces */,
@@ -131,7 +136,6 @@
 				7C03600F28A57F15008434AD /* GameScene.sks */,
 				7C03601128A57F15008434AD /* Actions.sks */,
 				7C03601328A57F15008434AD /* GameScene.swift */,
-				7CCA5B5628BD3FEA00130B7F /* audio */,
 			);
 			path = "Farmer'sGuild";
 			sourceTree = "<group>";
@@ -159,13 +163,6 @@
 				7CCA5B1D28B6D53400130B7F /* CropController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		7CCA5B2028B6D6FE00130B7F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		7CCA5B2128B6D70100130B7F /* ViewController */ = {
@@ -201,14 +198,6 @@
 				7C03601C28A57F16008434AD /* LaunchScreen.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		7CCA5B5628BD3FEA00130B7F /* audio */ = {
-			isa = PBXGroup;
-			children = (
-				7CCA5B5728BD41AD00130B7F /* musicSound.mp3 */,
-			);
-			path = audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,10 +306,8 @@
 			files = (
 				7C03601928A57F15008434AD /* Main.storyboard in Resources */,
 				7C03601028A57F15008434AD /* GameScene.sks in Resources */,
-				7CCA5B5828BD41AE00130B7F /* musicSound.mp3 in Resources */,
 				7C03601B28A57F16008434AD /* Assets.xcassets in Resources */,
 				7C03601E28A57F16008434AD /* LaunchScreen.storyboard in Resources */,
-				7CCA5B2A28B94B7800130B7F /* Images in Resources */,
 				7C03601228A57F15008434AD /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +342,7 @@
 				7C03600E28A57F15008434AD /* AppDelegate.swift in Sources */,
 				7CCA5B5528BD3D1700130B7F /* Sound.swift in Sources */,
 				7CCA5B1C28B6CD8E00130B7F /* Constants.swift in Sources */,
+				1BF18EDF28BDC28F00140328 /* Crop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,4 +9,5 @@ import Foundation
 
 struct Constants {
     static let cropKey = "cropKey"
-}
+    static let cropTimeValue = 15.0
+    }

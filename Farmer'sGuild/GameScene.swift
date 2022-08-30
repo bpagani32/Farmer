@@ -9,17 +9,11 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene, TimerControllerDelegete {
-    func cropTimerCompleted() {
-        print("The Timer has completed call your growCrop function")
-        CropController.growCrop()
-    }
     
-    func cropTimerStopped() {
-        print("The timer has stopped")
-    }
+  
     //Tree Sprite
     let treeSpriteNode = SKSpriteNode( imageNamed: "crop0")
-     var treeFrames = [SKTexture] ()
+    var treeFrames = [SKTexture] ()
     
     // Nodes
     var player : SKNode?
@@ -40,6 +34,10 @@ class GameScene: SKScene, TimerControllerDelegete {
     let scoreLabel = SKLabelNode()
     var score = 0
     
+    //Timer
+    let timerLabel = SKLabelNode()
+    var timeRemaining = "00 : 00"
+    
     // Sprite Engine
     var previousTimeInterval : TimeInterval = 0
     var playerIsFacingRight = true
@@ -49,11 +47,11 @@ class GameScene: SKScene, TimerControllerDelegete {
     var playerStateMachine : GKStateMachine!
     
     //Crop Controller
-
+    
     
     // Timer
     var timerController = TimerController()
-        
+    
     // didmove
     override func didMove(to view: SKView) {
         
@@ -61,8 +59,8 @@ class GameScene: SKScene, TimerControllerDelegete {
         
         //music
         
-//        let soundAction = SKAction.repeatForever(SKAction.playSoundFileNamed("musicSound.mp3", waitForCompletion: false))
-//        run(soundAction)
+        //        let soundAction = SKAction.repeatForever(SKAction.playSoundFileNamed("musicSound.mp3", waitForCompletion: false))
+        //        run(soundAction)
         
         player = childNode(withName: "player")
         joystick = childNode(withName: "joystick")
@@ -77,16 +75,24 @@ class GameScene: SKScene, TimerControllerDelegete {
             LandingState(playerNode: player!),
             StunnedState(playerNode: player!),
             CheerState(playerNode: player!),
-            ])
+        ])
         
         playerStateMachine.enter(IdleState.self)
         
-     
+        
         //Timer
         timerController.timeDelegate = self
         
-        
         //ScoreLabel
+        setUpScoreLabel()
+        
+        //Tree Sprite
+        
+        //TimerLabel
+        setUpTimerLabel()
+    }
+    
+    func setUpScoreLabel() {
         scoreLabel.position = CGPoint(x: (cameraNode?.position.x)! + 310, y: 140)
         scoreLabel.fontColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         scoreLabel.fontSize = 24
@@ -94,11 +100,18 @@ class GameScene: SKScene, TimerControllerDelegete {
         scoreLabel.horizontalAlignmentMode = .right
         scoreLabel.text = String(score)
         cameraNode?.addChild(scoreLabel)
-        
-        //Tree Sprite
-   
-        }
     }
+    
+    func setUpTimerLabel() {
+        timerLabel.position = CGPoint(x: (cameraNode?.position.x)! + 110, y: 140)
+        timerLabel.fontColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        timerLabel.fontSize = 24
+        timerLabel.fontName = "Arial"
+        timerLabel.horizontalAlignmentMode = .right
+        timerLabel.text = String(timeRemaining)
+        cameraNode?.addChild(timerLabel)
+    }
+}
 
 
 // MARK: Touches
@@ -117,7 +130,7 @@ extension GameScene {
                 playerStateMachine.enter(JumpingState.self)
             }
         }
-     
+        
     }
     
     
@@ -155,6 +168,23 @@ extension GameScene {
     }
 }
 
+// MARK: Timer Delegate functions
+extension GameScene {
+    func timerSecondTick() {
+        DispatchQueue.main.async {
+            self.timerLabel.text = self.timerController.timeAsString()
+        }
+    }
+    
+    func cropTimerCompleted() {
+        print("The Timer has completed call your growCrop function")
+        rewardTouch()
+    }
+    
+    func cropTimerStopped() {
+        print("The timer has stopped")
+    }
+}
 // MARK: Action
 extension GameScene {
     func resetKnobPosition() {
@@ -164,7 +194,8 @@ extension GameScene {
         joystickKnob?.run(moveBack)
         joystickAction = false
     }
-    func rewardTouch(){
+    
+    func rewardTouch() {
         score += 3
         scoreLabel.text = String(score)
     }
@@ -240,7 +271,7 @@ extension GameScene: SKPhysicsContactDelegate {
             return (first.bitmask == masks.first && second.bitmask == masks.second) ||
             (first.bitmask == masks.second && second.bitmask == masks.first)
         }
-    
+        
     }
     func didBegin(_ contact: SKPhysicsContact) {
         let collision = Collision(masks: (first: contact.bodyA.categoryBitMask, second:contact.bodyB.categoryBitMask))
@@ -251,21 +282,20 @@ extension GameScene: SKPhysicsContactDelegate {
         if collision.matches(.player, .reward) {
             if contact.bodyA.node?.name == "tree" {
                 contact.bodyA.node?.physicsBody?.categoryBitMask = 0
-               
+                
             }
             else if contact.bodyB.node?.name == "tree" {
                 contact.bodyB.node?.physicsBody?.categoryBitMask = 0
                 contact.bodyB.node?.removeFromParent()
             }
-            if rewardIsNotTouched{
-                rewardTouch()
+            
+            if rewardIsNotTouched {
+               
                 rewardIsNotTouched = false
                 saveTimeCropWasTouched()
-                //TODO: - for testing: set the timer based on the time the crop was touched and add a few seconds to that time
-                timerController.startTimer(time: 0.3)
-                                
+                timerController.startTimer(time: Constants.cropTimeValue)
             }
-         
+            
+        }
     }
-}
 }
