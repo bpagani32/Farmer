@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SMK-Ve-95F">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="background_road_no_foreground" translatesAutoresizingMaskIntoConstraints="NO" id="Q2T-su-1Sd">
+                                <rect key="frame" x="0.0" y="-22" width="896" height="415"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="415" id="Y1Y-gr-xIk"/>
+                                    <constraint firstAttribute="width" constant="896" id="cWj-7n-hvc"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="character_maleAdventurer_attackKick" translatesAutoresizingMaskIntoConstraints="NO" id="tYr-gC-6ul">
+                                <rect key="frame" x="407" y="20" width="192" height="257"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ip-F7-2Hd">
+                                <rect key="frame" x="0.0" y="0.0" width="294" height="83"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Keeper of the Plains">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="48" name="SignPainter-HouseScript"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="titleScreenZomb" translatesAutoresizingMaskIntoConstraints="NO" id="OPb-EB-nI1">
+                                <rect key="frame" x="525" y="100" width="192" height="256"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QzT-Re-4Ln"/>
+                        <constraints>
+                            <constraint firstItem="tYr-gC-6ul" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2Ip-F7-2Hd" secondAttribute="trailing" constant="8" symbolic="YES" id="Bsx-51-Mse"/>
+                            <constraint firstItem="QzT-Re-4Ln" firstAttribute="bottom" secondItem="OPb-EB-nI1" secondAttribute="bottom" constant="37" id="Dul-TD-2gV"/>
+                            <constraint firstItem="Q2T-su-1Sd" firstAttribute="bottom" secondItem="QzT-Re-4Ln" secondAttribute="bottom" id="EdH-FE-xEF"/>
+                            <constraint firstItem="QzT-Re-4Ln" firstAttribute="trailing" secondItem="OPb-EB-nI1" secondAttribute="trailing" constant="135" id="GX8-iU-BHv"/>
+                            <constraint firstItem="tYr-gC-6ul" firstAttribute="top" secondItem="QzT-Re-4Ln" secondAttribute="top" constant="20" id="Lwk-x4-3dc"/>
+                            <constraint firstItem="2Ip-F7-2Hd" firstAttribute="top" secondItem="QzT-Re-4Ln" secondAttribute="top" id="MqT-RJ-iUx"/>
+                            <constraint firstItem="2Ip-F7-2Hd" firstAttribute="leading" secondItem="Q2T-su-1Sd" secondAttribute="leading" id="T0W-Kc-mZA"/>
+                            <constraint firstItem="QzT-Re-4Ln" firstAttribute="bottom" secondItem="2Ip-F7-2Hd" secondAttribute="bottom" constant="310" id="TeH-bP-MwF"/>
+                            <constraint firstItem="Q2T-su-1Sd" firstAttribute="centerX" secondItem="SMK-Ve-95F" secondAttribute="centerX" id="X1P-J8-TUr"/>
+                            <constraint firstItem="OPb-EB-nI1" firstAttribute="leading" secondItem="QzT-Re-4Ln" secondAttribute="leading" constant="481" id="dCM-03-vfp"/>
+                            <constraint firstItem="tYr-gC-6ul" firstAttribute="leading" secondItem="QzT-Re-4Ln" secondAttribute="leading" constant="363" id="e5s-lA-yRe"/>
+                            <constraint firstItem="Q2T-su-1Sd" firstAttribute="centerY" secondItem="tYr-gC-6ul" secondAttribute="centerY" constant="37" id="kAf-bN-xTH"/>
+                            <constraint firstItem="OPb-EB-nI1" firstAttribute="top" secondItem="QzT-Re-4Ln" secondAttribute="top" constant="100" id="o1B-WW-pSN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.901785714285715" y="373.91304347826087"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" systemColor="systemRedColor"/>
+    <resources>
+        <image name="background_road_no_foreground" width="3687" height="1333"/>
+        <image name="character_maleAdventurer_attackKick" width="192" height="256"/>
+        <image name="titleScreenZomb" width="96" height="128"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
